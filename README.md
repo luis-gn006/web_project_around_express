@@ -1,6 +1,6 @@
 # Tripleten web_project_around_express
 
-# Proyecto realizado en el bootcamp de desarrollo web de Tripleten. Utiliza HTML, CSS, JS y React. El proyecto fue realizado en VSS (Visual Studio Code).
+# Proyecto realizado en el bootcamp de desarrollo web de Tripleten. Utiliza React y Express. El proyecto fue realizado en VSS (Visual Studio Code).
 
 ## ¿De qué se trata?
 
