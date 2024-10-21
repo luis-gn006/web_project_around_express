@@ -1,8 +1,8 @@
 const allRouter = require('express').Router();
 
-allRouter.all('*',(req, res) => {
+allRouter.all('*', (req, res) => {
   res.status(500).send({
-    message: 'Not found'
+    message: 'Not found',
   });
 });
 
