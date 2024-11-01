@@ -5,33 +5,11 @@ const doesUserExist = require('../middleware/users');
 
 const usersFile = path.join(__dirname, '..', 'data', 'users.json');
 
-usersRouter.get('/users', (req, res) => {
-  fs.readFile(usersFile).then(data => {
-    res.status(200).send(JSON.parse(data));
-  });
-});
+const { getUser, createUser, getUsers } = require('../controllers/user.js');
 
-usersRouter.get('/users/:id', doesUserExist, (req, res) => {
-  res.send({
-    status: !!req.user,
-    data: req.user,
-  });
-});
+usersRouter.get('/users', getUsers)
+usersRouter.get('/users/:id', doesUserExist, getUser);
+usersRouter.post('/users', createUser);
 
-usersRouter.post('/users', (req, res) => {
-  const user = req.body;
-  fs.readFile(usersFile).then(data => {
-    const users = JSON.parse(data);
-    users.push(user);
-    fs.writeFile(usersFile, JSON.stringify(users)).then(() => {
-      res.send({
-        message: 'new user created',
-        data: user,
-      });
-    });
-  }).catch(err => {
-    res.status(500).send(err);
-  });
-});
 
 module.exports = usersRouter;
