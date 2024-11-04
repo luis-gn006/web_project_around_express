@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const user = require('../models/user');
+const user = require('./user');
 
 const cardsSchema = new mongoose.Schema({
   name: {
