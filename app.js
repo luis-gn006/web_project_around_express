@@ -20,7 +20,7 @@ app.use('/', usersRouter);
 
 app.use((req, res, next) => {
   req.user = {
-    _id: '672519534a742834233e7189' // pega el _id del usuario de prueba que creamos en el paso anterior
+    _id: '672ab6ad57abcacafd8186bd' // usuario prueba
   };
 
   next();

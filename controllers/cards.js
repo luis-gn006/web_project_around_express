@@ -3,7 +3,16 @@ const Card = require('../models/card.js');
 module.exports.getCards = (req, res) => {
   Card.find({})
     .then(card => res.send({ data: card}))
-    .catch(err => res.status(500).send({ message: 'Error'}));
+    .catch(err => {
+      const serverError = new ApiError();
+      res.status(serverError.statusCode).send({
+        error: {
+          name: serverError.name,
+          message: serverError.message,
+          statusCode: serverError.statusCode
+        }
+      });
+    })
 };
 
 module.exports.createCard = (req, res) => {
@@ -11,7 +20,16 @@ module.exports.createCard = (req, res) => {
   const { name, link } = req.body;
   Card.create({ name, link ,owner})
     .then(card => res.send({ data: card }))
-    .catch(err => res.status(500).send({ message: 'Error' ,err}));
+    .catch(err => {
+      const serverError = new ApiError();
+      res.status(serverError.statusCode).send({
+        error: {
+          name: serverError.name,
+          message: serverError.message,
+          statusCode: serverError.statusCode
+        }
+      });
+    })
 };
 
 module.exports.deleteCard = (req, res) => {
@@ -19,5 +37,14 @@ module.exports.deleteCard = (req, res) => {
 
   Card.delete({ id })
     .then(card => res.send({ data: card }))
-    .catch(err => res.status(500).send({ message: 'Error' ,err}));
+    .catch(err => {
+      const serverError = new ApiError();
+      res.status(serverError.statusCode).send({
+        error: {
+          name: serverError.name,
+          message: serverError.message,
+          statusCode: serverError.statusCode
+        }
+      });
+    })
 };
