@@ -16,15 +16,6 @@ const doesUserExist = async (req, res, next) => {
           statusCode: customError.statusCode
         }
       });
-    } else {
-      const serverError = new ApiError();
-      res.status(serverError.statusCode).send({
-        error: {
-          name: serverError.name,
-          message: serverError.message,
-          statusCode: serverError.statusCode
-        }
-      });
     }
   }
 };
