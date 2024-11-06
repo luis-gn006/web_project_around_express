@@ -58,3 +58,33 @@ module.exports.deleteCard = (req, res) => {
       });
     })
 };
+
+module.exports.likeCard = (req, res) => {
+  Card.findByIdAndUpdate( req.params.cardId, { $addToSet: { likes: req.user._id } }, {new: true})
+    .then(card => res.send({message: 'Tarjeta actualizada' , data: card }))
+    .catch(err => {
+      const serverError = new ApiError();
+      res.status(serverError.statusCode).send({
+        error: {
+          name: serverError.name,
+          message: serverError.message,
+          statusCode: serverError.statusCode
+        }
+      });
+    })
+};
+
+module.exports.dislikeCard = (req, res) => {
+  Card.findByIdAndUpdate( req.params.cardId, { $pull: { likes: req.user._id } }, {new: true})
+    .then(card => res.send({message: 'Tarjeta actualizada' , data: card }))
+    .catch(err => {
+      const serverError = new ApiError();
+      res.status(serverError.statusCode).send({
+        error: {
+          name: serverError.name,
+          message: serverError.message,
+          statusCode: serverError.statusCode
+        }
+      });
+    })
+};

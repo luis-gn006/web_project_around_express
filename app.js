@@ -16,7 +16,6 @@ const { PORT = 3000 } = process.env;
 const app = express();
 app.use(express.json());
 
-app.use('/', usersRouter);
 
 app.use((req, res, next) => {
   req.user = {
@@ -26,6 +25,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/', usersRouter);
 app.use('/', cardsRouter);
 app.use('/', notFoundRouter);
 
