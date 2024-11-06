@@ -1,4 +1,5 @@
 const Card = require('../models/card.js');
+const { ApiError, ValidationError } = require('../components/errorHandlers');
 
 module.exports.getCards = (req, res) => {
   Card.find({})
@@ -21,6 +22,16 @@ module.exports.createCard = (req, res) => {
   Card.create({ name, link ,owner})
     .then(card => res.send({ data: card }))
     .catch(err => {
+      if (err.name === 'ValidationError') {
+        const validatorError = new ValidationError();
+        res.status(validatorError.statusCode).send({
+          error: {
+            name: validatorError.name,
+            message: validatorError.message,
+            statusCode: validatorError.statusCode
+          }
+        });
+      } else {
       const serverError = new ApiError();
       res.status(serverError.statusCode).send({
         error: {
@@ -29,14 +40,13 @@ module.exports.createCard = (req, res) => {
           statusCode: serverError.statusCode
         }
       });
-    })
+    }
+  })
 };
 
 module.exports.deleteCard = (req, res) => {
-  const { id } = req.body;
-
-  Card.delete({ id })
-    .then(card => res.send({ data: card }))
+  Card.findByIdAndDelete(req.params.cardId)
+    .then(card => res.send({ message: "Tarjeta eliminada", data: card }))
     .catch(err => {
       const serverError = new ApiError();
       res.status(serverError.statusCode).send({
