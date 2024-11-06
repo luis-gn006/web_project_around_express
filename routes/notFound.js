@@ -7,7 +7,7 @@ notFoundRouter.all('*', (req, res) => {
     error: {
       statusCode: error.statusCode,
       name: error.name,
-      message: error.message
+      message: 'Recurso solicitado no encontrado'
     }
   })
 });
