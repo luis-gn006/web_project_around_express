@@ -2,8 +2,8 @@ const usersRouter = require('express').Router();
 const doesUserExist = require('../middleware/users');
 
 const {
-  getUser, createUser, getUsers, updateUser, updateAvatar
-} = require('../controllers/users.js');
+  getUser, createUser, getUsers, updateUser, updateAvatar,
+} = require('../controllers/users');
 
 usersRouter.get('/users', getUsers);
 usersRouter.get('/users/:id', doesUserExist, getUser);

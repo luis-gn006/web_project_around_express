@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
         return url.test(v);
       },
       message: 'Lo siento. Tu link no es valido',
-    }
+    },
   },
 });
 

@@ -1,5 +1,5 @@
 const Card = require('../models/card');
-const { NotFoundError } = require('../components/errorHandlers');
+const NotFoundError = require('../components/NotFoundError');
 
 const doesCardExist = async (req, res, next) => {
   try {
@@ -14,7 +14,7 @@ const doesCardExist = async (req, res, next) => {
           name: customError.name,
           message: customError.message,
           statusCode: customError.statusCode,
-        }
+        },
       });
     }
   }

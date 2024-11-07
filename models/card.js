@@ -17,7 +17,7 @@ const cardsSchema = new mongoose.Schema({
         return url.test(v);
       },
       message: 'Lo siento. Tu link no es valido',
-    }
+    },
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,

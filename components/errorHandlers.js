@@ -1,4 +1,4 @@
-class ApiError extends Error {
+/* class ApiError extends Error {
   constructor(message = 'Error del servidor.') {
     super(message);
     this.name = 'ServerError';
@@ -25,5 +25,5 @@ class NotFoundError extends Error {
 module.exports = {
   ApiError,
   ValidationError,
-  NotFoundError
-}
+  NotFoundError,
+}; */
