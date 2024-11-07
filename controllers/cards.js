@@ -80,9 +80,11 @@ module.exports.likeCard = (req, res) => {
 };
 
 module.exports.dislikeCard = (req, res) => {
-  cardsSchema.findByIdAndUpdate(req.params.cardId,
-      { $pull: { likes: req.user._id } },
-      { new: true })
+  cardsSchema.findByIdAndUpdate(
+    req.params.cardId,
+    { $pull: { likes: req.user._id } },
+    { new: true },
+  )
     .then((card) => res.send({ message: 'Tarjeta actualizada', data: card }))
     .catch((err) => {
       const serverError = new ApiError();
