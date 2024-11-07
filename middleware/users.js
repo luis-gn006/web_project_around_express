@@ -1,5 +1,5 @@
-const User = require('../models/user.js');
-const { ApiError, NotFoundError } = require('../components/errorHandlers');
+const User = require('../models/user');
+const { NotFoundError } = require('../components/errorHandlers');
 
 const doesUserExist = async (req, res, next) => {
   try {
@@ -13,7 +13,7 @@ const doesUserExist = async (req, res, next) => {
         error: {
           name: customError.name,
           message: customError.message,
-          statusCode: customError.statusCode
+          statusCode: customError.statusCode,
         }
       });
     }

@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 2,
     maxlength: 30,
-    },
+  },
   avatar: {
     type: String,
     required: true,
@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
         const url = /^https?:\/\/(www\.)?[a-zA-Z0-9.-]+(\/[a-zA-Z0-9._~:\/?%#\[\]@!$&'()*+,;=-]*#?)?$/gm;
         return url.test(v);
       },
-        message: 'Lo siento. Tu link no es valido',
+      message: 'Lo siento. Tu link no es valido',
     }
   },
 });

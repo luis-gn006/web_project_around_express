@@ -1,5 +1,5 @@
 const notFoundRouter = require('express').Router();
-const {ApiError} = require('../components/errorHandlers');
+const { ApiError } = require('../components/errorHandlers');
 
 notFoundRouter.all('*', (req, res) => {
   const error = new ApiError();
@@ -7,9 +7,9 @@ notFoundRouter.all('*', (req, res) => {
     error: {
       statusCode: error.statusCode,
       name: error.name,
-      message: 'Recurso solicitado no encontrado'
+      message: 'Recurso solicitado no encontrado',
     }
-  })
+  });
 });
 
 module.exports = notFoundRouter;

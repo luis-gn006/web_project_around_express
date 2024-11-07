@@ -1,9 +1,11 @@
 const cardsRouter = require('express').Router();
 const doesCardExist = require('../middleware/cards');
 
-const { getCards, createCard, deleteCard, likeCard, dislikeCard} = require('../controllers/cards.js');
+const {
+  getCards, createCard, deleteCard, likeCard, dislikeCard
+} = require('../controllers/cards.js');
 
-cardsRouter.get('/cards', getCards)
+cardsRouter.get('/cards', getCards);
 cardsRouter.post('/cards', createCard);
 cardsRouter.delete('/cards/:cardId', doesCardExist, deleteCard);
 cardsRouter.put('/cards/:cardId/likes', doesCardExist, likeCard);

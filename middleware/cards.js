@@ -1,5 +1,5 @@
-const Card = require('../models/card.js');
-const { ApiError, NotFoundError } = require('../components/errorHandlers');
+const Card = require('../models/card');
+const { NotFoundError } = require('../components/errorHandlers');
 
 const doesCardExist = async (req, res, next) => {
   try {
@@ -13,7 +13,7 @@ const doesCardExist = async (req, res, next) => {
         error: {
           name: customError.name,
           message: customError.message,
-          statusCode: customError.statusCode
+          statusCode: customError.statusCode,
         }
       });
     }

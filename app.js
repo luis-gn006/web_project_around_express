@@ -10,16 +10,15 @@ mongoose.connect('mongodb://localhost:27017/aroundb')
   })
   .catch(err => {
     console.error('MongoDB connection error:', err);
-});
+  });
 
 const { PORT = 3000 } = process.env;
 const app = express();
 app.use(express.json());
 
-
 app.use((req, res, next) => {
   req.user = {
-    _id: '672ab6ad57abcacafd8186bd' // usuario prueba
+    _id: '672ab6ad57abcacafd8186bd', // usuario prueba
   };
 
   next();
